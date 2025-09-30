@@ -7,9 +7,9 @@
   <meta name="theme-color" content="#0b0b12" />
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Tailwind CDN + theme -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -17,11 +17,12 @@
         extend: {
           colors: {
             ink: "#0b0b12",
-            paper: "#f7f2ff",
-            primary: "#9B5EFF",      // electric violet
-            secondary: "#FF3EA5",    // hot pink
-            accent: "#FFD166",       // gold
-            glass: "rgba(255,255,255,0.14)"
+            night: "#12121b",
+            paper: "#FCFCFD",
+            gold: "#F3C97A",      // gold principal
+            goldDeep: "#D7A84F",  // gold sombra
+            goldSoft: "#FFE9B6",  // gold claro para detalles
+            white80: "rgba(255,255,255,.8)"
           },
           fontFamily: {
             display: ["Playfair Display", "serif"],
@@ -30,22 +31,16 @@
           },
           boxShadow: {
             soft: "0 10px 30px rgba(0,0,0,.25)",
-          },
-          backdropBlur: {
-            xs: "2px",
+            ring: "0 0 0 1px rgba(243,201,122,.35), 0 8px 24px rgba(0,0,0,.25)"
           },
           keyframes: {
-            floaty: { "0%,100%": { transform: "translateY(0)" }, "50%": { transform: "translateY(-6px)" } },
-            pulseGlow: { "0%,100%": { opacity: .6 }, "50%": { opacity: 1 } },
             chevrons: {
-              "0%": { transform: "translateY(0)", opacity: .2 },
+              "0%": { transform: "translateY(0)", opacity: .25 },
               "50%": { transform: "translateY(6px)", opacity: 1 },
-              "100%": { transform: "translateY(12px)", opacity: .2 }
+              "100%": { transform: "translateY(12px)", opacity: .25 }
             }
           },
           animation: {
-            floaty: "floaty 3s ease-in-out infinite",
-            pulseGlow: "pulseGlow 2.4s ease-in-out infinite",
             chevrons: "chevrons 1.6s ease-in-out infinite"
           }
         }
@@ -56,195 +51,171 @@
   <style>
     html, body { height: 100%; margin: 0; overflow-y: scroll; scroll-snap-type: y mandatory; background: #0b0b12; }
     section { height: 100vh; scroll-snap-align: start; }
-    .glass { background: linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.08)); backdrop-filter: blur(8px); }
-    .gradient-btn { background-image: linear-gradient(135deg, #FF3EA5, #9B5EFF); }
-    .title-gradient { background: linear-gradient(135deg, #fff 0%, #FFD166 60%, #FF3EA5 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .timer-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); }
+    /* Estética dorado + blanco */
+    .title-gold { 
+      background: linear-gradient(135deg, #ffffff 0%, #F3C97A 50%, #D7A84F 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .glass { background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.22); }
+    .timer-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(243,201,122,.35); }
+    /* Botones finos */
+    .btn { 
+      display: inline-flex; align-items: center; justify-content: center; 
+      width: 100%; border-radius: 9999px; padding: .9rem 1.2rem;
+      font-weight: 600; letter-spacing: .2px; transition: .25s ease;
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #FFE9B6 0%, #F3C97A 40%, #D7A84F 100%);
+      color: #0b0b12; box-shadow: var(--shadow, 0 6px 18px rgba(215,168,79,.25));
+      border: 1px solid rgba(215,168,79,.55);
+    }
+    .btn-gold:active { transform: translateY(1px); }
+    .btn-ghost {
+      background: rgba(255,255,255,.06);
+      color: #fff; border: 1px solid rgba(255,255,255,.22);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.10); }
   </style>
 </head>
-<body class="font-sans text-white selection:bg-secondary selection:text-white">
+
+<body class="font-sans text-white">
 
   <!-- Slide 1: Hero + Countdown -->
   <section class="relative flex items-center justify-center">
-    <!-- BG -->
-    <img src="img/camila_main.png" alt="Camila"
-         class="absolute inset-0 w-full h-full object-cover" />
-    <div class="absolute inset-0 bg-ink/40 mix-blend-multiply"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-ink/10 via-ink/40 to-ink/70"></div>
-  
-    <!-- Content -->
+    <img src="img/camila_main.png" alt="Camila" class="absolute inset-0 w-full h-full object-cover" />
+    <div class="absolute inset-0 bg-ink/35 mix-blend-multiply"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/10 via-ink/45 to-ink/70"></div>
+
     <div class="relative z-10 px-5 w-full max-w-sm text-center">
       <div class="mb-3 text-3xl sm:text-4xl font-display leading-tight">
-        <span class="block title-gradient drop-shadow">Los XV de</span>
+        <span class="block title-gold drop-shadow">Los XV de</span>
         <span class="block mt-1 font-script text-5xl sm:text-6xl text-white">Camila</span>
       </div>
       <p class="text-white/90">¡Estás invitado!</p>
-  
-      <!-- Countdown -->
+
       <div id="countdown" class="mt-5 grid grid-cols-4 gap-2 text-center text-sm"></div>
     </div>
-  
-    <!-- "Deslizá" (AHORA hijo directo del <section>) -->
-    <div
-      class="pointer-events-none absolute inset-x-0 z-20
-             flex flex-col items-center
-             bottom-[calc(env(safe-area-inset-bottom)+14px)]">
+
+    <!-- Deslizá -->
+    <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
       <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
       </svg>
     </div>
   </section>
-  
 
   <!-- Slide 2: Dónde y cuándo -->
   <section class="relative flex flex-col items-center justify-center px-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-ink via-ink to-ink"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-ink via-night to-ink"></div>
     <div class="relative z-10 w-full max-w-sm">
-      <h2 class="font-display text-3xl mb-2">¿Dónde y Cuándo?</h2>
-      <p class="text-white/85 mb-4">
-        Sábado <b>15 de noviembre</b> — <b>21:00 hs</b><br/>
+      <h2 class="font-display text-3xl mb-2 title-gold">¿Dónde y Cuándo?</h2>
+      <p class="text-white/85 mb-5">
+        Sábado <b class="text-white">15 de noviembre</b> — <b class="text-white">21:00 hs</b><br/>
         Salón Elegance · Av. Libertador 1234
       </p>
 
-      <!-- Botones -->
       <div class="grid grid-cols-1 gap-3">
-        <a href="https://maps.google.com/?q=Av+Libertador+1234" target="_blank"
-        class="gradient-btn w-full text-center rounded-xl py-3 font-semibold shadow-soft active:scale-[.98]">
-       Ver en Google Maps
-     </a>
-     
-     <button id="toggleMap"
-             class="glass w-full text-center rounded-xl py-3 font-semibold border border-white/10 active:scale-[.98]">
-       Mostrar mapa aquí
-     </button>
-     
-        <div id="mapWrap" class="hidden mt-2 rounded-xl overflow-hidden shadow-soft">
-          <iframe
-            src="https://www.google.com/maps?q=Av+Libertador+1234&output=embed"
-            class="w-full h-56 border-0" loading="lazy"></iframe>
+        <a href="https://maps.google.com/?q=Av+Libertador+1234" target="_blank" class="btn btn-gold">Ver en Google Maps</a>
+        <button id="toggleMap" class="btn btn-ghost">Mostrar mapa aquí</button>
+
+        <div id="mapWrap" class="hidden mt-2 rounded-2xl overflow-hidden shadow-ring border border-white/15">
+          <iframe src="https://www.google.com/maps?q=Av+Libertador+1234&output=embed" class="w-full h-56 border-0" loading="lazy"></iframe>
         </div>
       </div>
     </div>
 
-    <div
-    class="pointer-events-none absolute inset-x-0 z-20
-           flex flex-col items-center
-           bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-    <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
-    <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
-    </svg>
-  </div>
+    <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
+      <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
+      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </div>
   </section>
 
   <!-- Slide 3: Dresscode -->
   <section class="relative flex items-center justify-center px-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-ink to-[#141427]"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-night to-ink"></div>
     <div class="relative z-10 w-full max-w-sm">
-      <h2 class="font-display text-3xl mb-1">Dresscode</h2>
-      <p class="text-white/80 mb-5">Formal &amp; Chic — colores sugeridos:</p>
+      <h2 class="font-display text-3xl mb-1 title-gold">Dresscode</h2>
+      <p class="text-white/80 mb-5">Formal &amp; Chic — paleta sugerida:</p>
 
       <div class="grid grid-cols-4 gap-3">
-        <div class="rounded-xl h-16 shadow-soft" style="background:#ffffff"></div>
-        <div class="rounded-xl h-16 shadow-soft" style="background:#FFD166"></div>
-        <div class="rounded-xl h-16 shadow-soft" style="background:#9B5EFF"></div>
-        <div class="rounded-xl h-16 shadow-soft" style="background:#FF3EA5"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#ffffff"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#F3C97A"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#D7A84F"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#f1f1f1"></div>
       </div>
 
       <p class="mt-4 text-sm text-white/70">Evitar jeans y zapatillas deportivas.</p>
     </div>
-    <div
-    class="pointer-events-none absolute inset-x-0 z-20
-           flex flex-col items-center
-           bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-    <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
-    <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
-    </svg>
-  </div>
+
+    <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
+      <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
+      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </div>
   </section>
 
   <!-- Slide 4: Galería -->
   <section class="relative flex flex-col justify-center items-center px-0">
-    <div class="absolute inset-0 bg-gradient-to-b from-[#141427] to-ink"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#151527] to-ink"></div>
     <div class="relative z-10 w-full p-4">
-      <h2 class="font-display text-3xl px-6 mb-4 text-center">Photoshoot</h2>
+      <h2 class="font-display text-3xl px-6 mb-3 title-gold text-center">Photoshoot</h2>
+
       <div class="w-full overflow-x-auto snap-x snap-mandatory pb-6">
         <div class="flex gap-4 px-6">
-          <img src="img/camila_ps_1.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft transition-transform active:scale-[.98]" alt="">
-          <img src="img/camila_ps_3.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft transition-transform active:scale-[.98]" alt="">
-          <img src="img/camila_ps_4.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft transition-transform active:scale-[.98]" alt="">
-          <img src="img/camila_ps_2.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft transition-transform active:scale-[.98]" alt="">
+          <img src="img/camila_ps_1.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft border border-white/10" alt="">
+          <img src="img/camila_ps_3.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft border border-white/10" alt="">
+          <img src="img/camila_ps_4.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft border border-white/10" alt="">
+          <img src="img/camila_ps_2.jpg" class="snap-start w-72 aspect-[3/4] object-cover rounded-2xl shadow-soft border border-white/10" alt="">
         </div>
       </div>
     </div>
-    <div
-    class="pointer-events-none absolute inset-x-0 z-20
-           flex flex-col items-center
-           bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-    <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
-    <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
-    </svg>
-  </div>
+
+    <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
+      <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
+      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </div>
   </section>
-  
 
   <!-- Slide 5: Confirmar asistencia -->
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-ink to-[#0f0f1a]"></div>
     <div class="relative z-10 w-full max-w-sm text-center">
-      <h2 class="font-display text-3xl mb-2">Confirmar asistencia</h2>
-      <p class="text-white/80 mb-5">¡Tu respuesta nos ayuda a organizar todo perfecto!</p>
-      <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank"
-         class="gradient-btn rounded-2xl py-4 px-6 font-semibold shadow-soft inline-block active:scale-[.98]">
-        Completar formulario
-      </a>
+      <h2 class="font-display text-3xl mb-2 title-gold">Confirmar asistencia</h2>
+      <p class="text-white/80 mb-5">Tu respuesta nos ayuda a organizar todo perfecto.</p>
+      <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank" class="btn btn-gold">Completar formulario</a>
       <p class="mt-3 text-xs text-white/60">Se abre un Google Form y registra en Google Sheets.</p>
     </div>
 
-    <div
-    class="pointer-events-none absolute inset-x-0 z-20
-           flex flex-col items-center
-           bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-    <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
-    <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-      <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
-    </svg>
-  </div>
+    <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
+      <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
+      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </div>
   </section>
 
-  <!-- Slide 6: Regalo por transferencia -->
+  <!-- Slide 6: Regalo -->
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0f0f1a] to-ink"></div>
     <div class="relative z-10 w-full max-w-sm">
-      <h2 class="font-display text-3xl mb-2">Regalo 💝</h2>
+      <h2 class="font-display text-3xl mb-2 title-gold">Regalo</h2>
       <p class="text-white/85 mb-4">Si querés hacer un regalo, podés transferir:</p>
 
-      <div class="glass rounded-2xl p-4 border border-white/10 shadow-soft space-y-3">
+      <div class="glass rounded-2xl p-4 shadow-soft space-y-3">
         <div class="flex items-center justify-between gap-3">
           <div>
-            <p class="text-xs uppercase tracking-wider text-white/60">Alias</p>
+            <p class="text-[11px] uppercase tracking-wider text-white/60">Alias</p>
             <p class="font-semibold">camila.xv</p>
           </div>
-          <button data-copy="camila.xv"
-                  class="copy-btn text-xs px-3 py-2 rounded-lg border border-white/15 hover:border-white/30 transition">
-            Copiar
-          </button>
+          <button data-copy="camila.xv" class="btn btn-ghost w-auto px-4 py-2 text-sm">Copiar</button>
         </div>
         <div class="flex items-center justify-between gap-3">
           <div>
-            <p class="text-xs uppercase tracking-wider text-white/60">CBU</p>
+            <p class="text-[11px] uppercase tracking-wider text-white/60">CBU</p>
             <p class="font-semibold break-all">123456789000000000</p>
           </div>
-          <button data-copy="123456789000000000"
-                  class="copy-btn text-xs px-3 py-2 rounded-lg border border-white/15 hover:border-white/30 transition">
-            Copiar
-          </button>
+          <button data-copy="123456789000000000" class="btn btn-ghost w-auto px-4 py-2 text-sm">Copiar</button>
         </div>
         <div>
-          <p class="text-xs uppercase tracking-wider text-white/60">Titular</p>
+          <p class="text-[11px] uppercase tracking-wider text-white/60">Titular</p>
           <p class="font-semibold">Camila Pérez</p>
         </div>
       </div>
@@ -253,55 +224,49 @@
     </div>
   </section>
 
-  <!-- JS: Countdown, toggles, copy -->
+  <!-- JS -->
   <script>
-    // ===== Countdown =====
+    // Countdown dorado
     const eventDate = new Date("Nov 15, 2025 21:00:00").getTime();
     const $count = document.getElementById("countdown");
 
-    function pad(n){ return String(n).padStart(2,"0"); }
-    function box(label, value){
-      return `
-        <div class="timer-box rounded-xl p-3">
-          <div class="text-2xl font-bold leading-none">${pad(value)}</div>
-          <div class="text-[10px] uppercase tracking-widest text-white/70 mt-1">${label}</div>
-        </div>`;
-    }
+    const pad = n => String(n).padStart(2,"0");
+    const box = (label,val) => `
+      <div class="timer-box rounded-xl p-3">
+        <div class="text-2xl font-bold leading-none">${pad(val)}</div>
+        <div class="text-[10px] uppercase tracking-widest text-white/70 mt-1">${label}</div>
+      </div>`;
 
     function tick(){
-      const now = Date.now();
-      let diff = eventDate - now;
-      if(diff <= 0){ $count.innerHTML = `<div class="col-span-4 glass rounded-xl p-4">¡Hoy es el gran día! 🎉</div>`; return; }
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff / (1000*60*60)) % 24);
-      const m = Math.floor((diff / (1000*60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-      $count.innerHTML = box("Días", d) + box("Horas", h) + box("Min", m) + box("Seg", s);
+      const diff = eventDate - Date.now();
+      if (diff <= 0) { $count.innerHTML = `<div class="col-span-4 glass rounded-xl p-4">¡Hoy es el gran día! 🎉</div>`; return; }
+      const d = Math.floor(diff/86400000);
+      const h = Math.floor((diff/3600000)%24);
+      const m = Math.floor((diff/60000)%60);
+      const s = Math.floor((diff/1000)%60);
+      $count.innerHTML = box("Días",d)+box("Horas",h)+box("Min",m)+box("Seg",s);
     }
-    tick(); setInterval(tick, 1000);
+    tick(); setInterval(tick,1000);
 
-    // ===== Toggle embedded map =====
+    // Toggle Google Map
     const toggleMap = document.getElementById("toggleMap");
     const mapWrap = document.getElementById("mapWrap");
-    if(toggleMap){
+    if (toggleMap) {
       toggleMap.addEventListener("click", () => {
         mapWrap.classList.toggle("hidden");
         toggleMap.textContent = mapWrap.classList.contains("hidden") ? "Mostrar mapa aquí" : "Ocultar mapa";
       });
     }
 
-    // ===== Copy to clipboard =====
-    document.querySelectorAll(".copy-btn").forEach(btn=>{
+    // Copy
+    document.querySelectorAll("[data-copy]").forEach(btn=>{
       btn.addEventListener("click", async () => {
         const val = btn.getAttribute("data-copy");
         try {
           await navigator.clipboard.writeText(val);
-          const prev = btn.textContent;
-          btn.textContent = "¡Copiado!";
-          setTimeout(()=> btn.textContent = prev, 1300);
-        } catch(e){
-          alert("No se pudo copiar. Mantené presionado para seleccionar.");
-        }
+          const prev = btn.textContent; btn.textContent = "¡Copiado!";
+          setTimeout(()=> btn.textContent = prev, 1200);
+        } catch { alert("No se pudo copiar. Mantené presionado para seleccionar."); }
       });
     });
   </script>
