@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>XV de Camila — OneClick Invitaciones</title>
-  <meta name="theme-color" content="#0b0b12" />
+  <meta name="theme-color" content="#0b0b12" /> 
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -19,9 +19,15 @@
             ink: "#0b0b12",
             night: "#12121b",
             paper: "#FCFCFD",
-            gold: "#F3C97A",      // gold principal
-            goldDeep: "#D7A84F",  // gold sombra
-            goldSoft: "#FFE9B6",  // gold claro para detalles
+
+            /* === Nueva paleta LILA + PLATEADO === */
+            lilac: "#A882BF",
+            lilacDeep: "#7C5FA3",
+            lilacSoft: "#EADCF7",
+            silver: "#D8DCE4",
+            silverDeep: "#AEB4BF",
+            silverSoft: "#EEF1F6",
+
             white80: "rgba(255,255,255,.8)"
           },
           fontFamily: {
@@ -31,7 +37,7 @@
           },
           boxShadow: {
             soft: "0 10px 30px rgba(0,0,0,.25)",
-            ring: "0 0 0 1px rgba(243,201,122,.35), 0 8px 24px rgba(0,0,0,.25)"
+            ring: "0 0 0 1px rgba(168,130,191,.35), 0 8px 24px rgba(0,0,0,.25)"
           },
           keyframes: {
             chevrons: {
@@ -51,28 +57,33 @@
   <style>
     html, body { height: 100%; margin: 0; overflow-y: scroll; scroll-snap-type: y mandatory; background: #0b0b12; }
     section { height: 100vh; scroll-snap-align: start; }
-    /* Estética dorado + blanco */
-    .title-gold { 
-      background: linear-gradient(135deg, #ffffff 0%, #F3C97A 50%, #D7A84F 100%);
+
+    /* Degradado metálico lila/plateado para títulos */
+    .title-iris { 
+      background: linear-gradient(135deg, #ffffff 0%, #D8DCE4 35%, #B693DD 65%, #7C5FA3 100%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .glass { background: rgba(255,255,255,0.10); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.22); }
-    .timer-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(243,201,122,.35); }
-    /* Botones finos */
+
+    /* Glass y contenedores con acento plateado */
+    .glass { background: rgba(255,255,255,0.08); backdrop-filter: blur(10px); border: 1px solid rgba(216,220,228,.35); }
+    .timer-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(168,130,191,.35); }
+
+    /* Botones elegantes */
     .btn { 
       display: inline-flex; align-items: center; justify-content: center; 
       width: 100%; border-radius: 9999px; padding: .9rem 1.2rem;
       font-weight: 600; letter-spacing: .2px; transition: .25s ease;
     }
-    .btn-gold {
-      background: linear-gradient(135deg, #FFE9B6 0%, #F3C97A 40%, #D7A84F 100%);
-      color: #0b0b12; box-shadow: var(--shadow, 0 6px 18px rgba(215,168,79,.25));
-      border: 1px solid rgba(215,168,79,.55);
+    .btn-lilac {
+      background: linear-gradient(135deg, #EADCF7 0%, #A882BF 45%, #7C5FA3 100%);
+      color: #0b0b12; 
+      box-shadow: var(--shadow, 0 6px 18px rgba(124,95,163,.28));
+      border: 1px solid rgba(124,95,163,.55);
     }
-    .btn-gold:active { transform: translateY(1px); }
+    .btn-lilac:active { transform: translateY(1px); }
     .btn-ghost {
       background: rgba(255,255,255,.06);
-      color: #fff; border: 1px solid rgba(255,255,255,.22);
+      color: #fff; border: 1px solid rgba(216,220,228,.35);
     }
     .btn-ghost:hover { background: rgba(255,255,255,.10); }
   </style>
@@ -88,7 +99,7 @@
 
     <div class="relative z-10 px-5 w-full max-w-sm text-center">
       <div class="mb-3 text-3xl sm:text-4xl font-display leading-tight">
-        <span class="block title-gold drop-shadow">Los XV de</span>
+        <span class="block title-iris drop-shadow">Los XV de</span>
         <span class="block mt-1 font-script text-5xl sm:text-6xl text-white">Camila</span>
       </div>
       <p class="text-white/90">¡Estás invitado!</p>
@@ -109,18 +120,25 @@
   <section class="relative flex flex-col items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-ink via-night to-ink"></div>
     <div class="relative z-10 w-full max-w-sm">
-      <h2 class="font-display text-3xl mb-2 title-gold">¿Dónde y Cuándo?</h2>
+      <h2 class="font-display text-3xl mb-2 title-iris">¿Dónde y Cuándo?</h2>
       <p class="text-white/85 mb-5">
-        Sábado <b class="text-white">15 de noviembre</b> — <b class="text-white">21:00 hs</b><br/>
-        Salón Elegance · Av. Libertador 1234
+        Sábado <b class="text-white">22 de noviembre</b> — <b class="text-white">21:00 hs</b><br/>
+        Salón "Abuelo Pepe" · Diag. los Quilmes 1104, Ingeniero Juan Allan
       </p>
 
       <div class="grid grid-cols-1 gap-3">
-        <a href="https://maps.google.com/?q=Av+Libertador+1234" target="_blank" class="btn btn-gold">Ver en Google Maps</a>
+        <a href="https://maps.app.goo.gl/Z6vEhgC4vdPq5gjC6" target="_blank" class="btn btn-lilac">Ver en Google Maps</a>
         <button id="toggleMap" class="btn btn-ghost">Mostrar mapa aquí</button>
 
         <div id="mapWrap" class="hidden mt-2 rounded-2xl overflow-hidden shadow-ring border border-white/15">
-          <iframe src="https://www.google.com/maps?q=Av+Libertador+1234&output=embed" class="w-full h-56 border-0" loading="lazy"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3273.961484096081!2d-58.2177221!3d-34.8571951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2d7082a6b853f%3A0x4ee65ebcc4b29d72!2sQuinta%20ABUELO%20PEPE%20(sal%C3%B3n)!5e0!3m2!1ses-419!2sar!4v1759760325886!5m2!1ses-419!2sar"
+            class="w-full h-56 border-0"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </div>
@@ -135,17 +153,15 @@
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-night to-ink"></div>
     <div class="relative z-10 w-full max-w-sm">
-      <h2 class="font-display text-3xl mb-1 title-gold">Dresscode</h2>
-      <p class="text-white/80 mb-5">Formal &amp; Chic — paleta sugerida:</p>
+      <h2 class="font-display text-3xl mb-1 title-iris">Dresscode</h2>
+      <p class="text-white/80 mb-5">Formal — colores sugeridos:</p>
 
       <div class="grid grid-cols-4 gap-3">
-        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#ffffff"></div>
-        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#F3C97A"></div>
-        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#D7A84F"></div>
-        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#f1f1f1"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#ffffff" title="Blanco"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#A882BF" title="Lila"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#7C5FA3" title="Lila profundo"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-white/15" style="background:#D8DCE4" title="Plateado"></div>
       </div>
-
-      <p class="mt-4 text-sm text-white/70">Evitar jeans y zapatillas deportivas.</p>
     </div>
 
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
@@ -154,8 +170,9 @@
     </div>
   </section>
 
+
   <!-- Slide 4: Galería -->
-  <section class="relative flex flex-col justify-center items-center px-0">
+  <!-- <section class="relative flex flex-col justify-center items-center px-0">
     <div class="absolute inset-0 bg-gradient-to-b from-[#151527] to-ink"></div>
     <div class="relative z-10 w-full p-4">
       <h2 class="font-display text-3xl px-6 mb-3 title-gold text-center">Photoshoot</h2>
@@ -174,16 +191,15 @@
       <span class="text-[11px] tracking-widest uppercase text-white/80">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </div>
-  </section>
+  </section> -->
 
   <!-- Slide 5: Confirmar asistencia -->
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-ink to-[#0f0f1a]"></div>
     <div class="relative z-10 w-full max-w-sm text-center">
-      <h2 class="font-display text-3xl mb-2 title-gold">Confirmar asistencia</h2>
+      <h2 class="font-display text-3xl mb-2 title-iris">Confirmar asistencia</h2>
       <p class="text-white/80 mb-5">Tu respuesta nos ayuda a organizar todo perfecto.</p>
-      <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank" class="btn btn-gold">Completar formulario</a>
-      <p class="mt-3 text-xs text-white/60">Se abre un Google Form y registra en Google Sheets.</p>
+      <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank" class="btn btn-lilac">Completar formulario</a>
     </div>
 
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
@@ -196,7 +212,7 @@
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-[#0f0f1a] to-ink"></div>
     <div class="relative z-10 w-full max-w-sm">
-      <h2 class="font-display text-3xl mb-2 title-gold">Regalo</h2>
+      <h2 class="font-display text-3xl mb-2 title-iris">Regalo</h2>
       <p class="text-white/85 mb-4">Si querés hacer un regalo, podés transferir:</p>
 
       <div class="glass rounded-2xl p-4 shadow-soft space-y-3">
@@ -226,8 +242,8 @@
 
   <!-- JS -->
   <script>
-    // Countdown dorado
-    const eventDate = new Date("Nov 15, 2025 21:00:00").getTime();
+    // Countdown
+    const eventDate = new Date("Nov 22, 2025 21:00:00").getTime();
     const $count = document.getElementById("countdown");
 
     const pad = n => String(n).padStart(2,"0");
