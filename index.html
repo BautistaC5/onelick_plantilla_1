@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>XV de Mia — OneClick Invitaciones</title>
-  <meta name="theme-color" content="#EEF1F6" />
+  <meta name="theme-color" content="#D5A7ED" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -16,22 +16,12 @@
       theme: {
         extend: {
           colors: {
-            ink: "#0b0b12",
-            night: "#12121b",
-            paper: "#FCFCFD",
-
-            /* Paleta LILA + PLATEADO */
-            lilac: "#A882BF",
-            lilacDeep: "#7C5FA3",
-            lilacSoft: "#EADCF7",
-            silver: "#D8DCE4",
-            silverDeep: "#AEB4BF",
-            silverSoft: "#EEF1F6",
-
-            /* NUEVO: texto principal oscuro */
-            dark: "#0E0E15",
-
-            white80: "rgba(255,255,255,.8)"
+            /* Paleta personalizada */
+            lilacBg:   "#D5A7ED",  /* lila clarito (fondo) */
+            inkDark:   "#000000",  /* texto principal */
+            parchment: "#E6E4CE",  /* neutro cálido */
+            taupe:     "#7A7265",  /* secundario */
+            plum:      "#540D6E",  /* acento principal */
           },
           fontFamily: {
             display: ["Playfair Display", "serif"],
@@ -39,8 +29,8 @@
             script: ["Great Vibes", "cursive"]
           },
           boxShadow: {
-            soft: "0 10px 30px rgba(0,0,0,.18)",
-            ring: "0 0 0 1px rgba(168,130,191,.28), 0 8px 24px rgba(0,0,0,.18)"
+            soft: "0 10px 30px rgba(0,0,0,.16)",
+            ring: "0 0 0 1px rgba(84,13,110,.28), 0 8px 24px rgba(0,0,0,.16)"
           },
           keyframes: {
             chevrons: {
@@ -58,20 +48,23 @@
   </script>
 
   <style>
-    /* ====== RESET TEMA CLARO PLATEADO ====== */
-    html, body { height: 100%; margin: 0; overflow-y: scroll; scroll-snap-type: y mandatory; background: #EEF1F6; }
-    section { height: 100vh; scroll-snap-align: start; color: #0E0E15; }
+    /* ====== RESET TEMA LILA SUAVE ====== */
+    html, body { height: 100%; margin: 0; overflow-y: scroll; scroll-snap-type: y mandatory; background: #D5A7ED; }
+    section { height: 100vh; scroll-snap-align: start; color: #000000; }
 
-    /* Título con degradado metálico sutil usable sobre fondo claro */
-    .title-iris {
-      background: linear-gradient(135deg, #3b3b45 0%, #5a6370 30%, #7C5FA3 65%, #A882BF 100%);
-      -webkit-background-clip: text; background-clip: text; color: transparent;
-    }
+    /* Título con degradado plum + taupe para elegancia */
+.title-iris{
+  background: linear-gradient(135deg, #000000 0%, #540D6E 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
 
-    /* Glass claros (reemplazo de los oscuros) */
-    .glass        { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); border: 1px solid rgba(168,130,191,.22); }
-    .glass-soft   { background: rgba(255,255,255,0.58); backdrop-filter: blur(10px); border: 1px solid rgba(168,130,191,.18); }
-    .timer-box    { background: rgba(255,255,255,0.85); border: 1px solid rgba(168,130,191,.28); }
+
+
+
+    /* Glass claro para legibilidad sobre foto */
+    .glass        { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.20); }
+    .glass-soft   { background: rgba(255,255,255,0.60); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.18); }
+    .timer-box    { background: rgba(255,255,255,0.86); border: 1px solid rgba(84,13,110,.22); }
 
     /* Botones */
     .btn {
@@ -79,42 +72,48 @@
       width: 100%; border-radius: 9999px; padding: .9rem 1.2rem;
       font-weight: 600; letter-spacing: .2px; transition: .25s ease;
     }
-    .btn-lilac {
-      background: linear-gradient(135deg, #EADCF7 0%, #A882BF 50%, #7C5FA3 100%);
-      color: #0E0E15;
-      box-shadow: 0 6px 18px rgba(124,95,163,.22);
-      border: 1px solid rgba(124,95,163,.38);
+    .btn-primary { /* plum principal */
+      background: linear-gradient(135deg, #7E1AA6 0%, #540D6E 60%, #3B0A4C 100%);
+      color: #E6E4CE;
+      box-shadow: 0 6px 18px rgba(84,13,110,.25);
+      border: 1px solid rgba(84,13,110,.55);
     }
-    .btn-lilac:active { transform: translateY(1px); }
-    .btn-dark {
-      background: #0E0E15; color: #ffffff;
-      border: 1px solid rgba(14,14,21,.6); box-shadow: 0 6px 18px rgba(14,14,21,.18);
+    .btn-primary:active { transform: translateY(1px); }
+
+    .btn-ink { /* negro sólido */
+      background: #000000; color: #E6E4CE;
+      border: 1px solid rgba(0,0,0,.6); box-shadow: 0 6px 18px rgba(0,0,0,.18);
     }
-    .btn-dark:hover { filter: brightness(1.05); }
-    .btn-ghost {
-      background: rgba(14,14,21,.04);
-      color: #0E0E15; border: 1px solid rgba(168,130,191,.30);
+    .btn-ink:hover { filter: brightness(1.05); }
+
+    .btn-ghost { /* contorno taupe/parchment suave */
+      background: rgba(255,255,255,.55);
+      color: #000000; border: 1px solid rgba(122,114,101,.45);
     }
-    .btn-ghost:hover { background: rgba(14,14,21,.07); }
+    .btn-ghost:hover { background: rgba(255,255,255,.7); }
+
+    /* Utilidades de texto con opacidad en negro para jerarquía */
+    .text-dim { color: rgba(0,0,0,.72); }
+    .text-soft { color: rgba(0,0,0,.56); }
   </style>
 </head>
 
-<body class="font-sans text-dark">
+<body class="font-sans text-inkDark">
 
   <!-- Slide 1: Hero + Countdown -->
   <section class="relative flex items-center justify-center">
     <img src="img/camila_main.png" alt="Camila" class="absolute inset-0 w-full h-full object-cover" />
-    <!-- Overlays: ahora aclaramos ligeramente para que el texto oscuro contraste dentro de una tarjeta -->
-    <div class="absolute inset-0 bg-white/10 mix-blend-normal"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-white/30 via-silverSoft/70 to-silverSoft/90"></div>
+    <!-- Aclarado para que el glass con texto negro se lea cómodo -->
+    <div class="absolute inset-0 bg-white/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg/60 via-lilacBg/80 to-lilacBg/90"></div>
 
     <div class="relative z-10 px-5 w-full max-w-sm">
       <div class="glass-soft rounded-2xl p-5 shadow-soft text-center">
         <div class="mb-3 text-3xl sm:text-4xl font-display leading-tight">
-          <span class="block title-iris drop-shadow">Los XV de</span>
-          <span class="block mt-1 font-script text-5xl sm:text-6xl text-dark">Mia</span>
+          <span class="block title-iris">Los XV de</span>
+          <span class="block mt-1 font-script text-5xl sm:text-6xl">Mia</span>
         </div>
-        <p class="text-[#0E0E15]/80">¡Estás invitado!</p>
+        <p class="text-dim">¡Estás invitado!</p>
 
         <div id="countdown" class="mt-5 grid grid-cols-4 gap-2 text-center text-sm"></div>
       </div>
@@ -122,7 +121,7 @@
 
     <!-- Deslizá -->
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-      <span class="text-[11px] tracking-widest uppercase text-[#0E0E15]/70">Deslizá</span>
+      <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
       </svg>
@@ -131,19 +130,19 @@
 
   <!-- Slide 2: Dónde y cuándo -->
   <section class="relative flex flex-col items-center justify-center px-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-silverSoft via-silver to-silverSoft"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg via-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm">
       <h2 class="font-display text-3xl mb-2 title-iris">¿Dónde y Cuándo?</h2>
-      <p class="text-[#0E0E15]/85 mb-5">
-        Sábado <b class="text-dark">22 de noviembre</b> — <b class="text-dark">21:00 hs</b><br/>
+      <p class="text-dim mb-5">
+        Sábado <b class="text-inkDark">22 de noviembre</b> — <b class="text-inkDark">21:00 hs</b><br/>
         Salón "Abuelo Pepe" · Diag. los Quilmes 1104, Ingeniero Juan Allan
       </p>
 
       <div class="grid grid-cols-1 gap-3">
-        <a href="https://maps.app.goo.gl/Z6vEhgC4vdPq5gjC6" target="_blank" class="btn btn-lilac">Ver en Google Maps</a>
+        <a href="https://maps.app.goo.gl/Z6vEhgC4vdPq5gjC6" target="_blank" class="btn btn-primary">Ver en Google Maps</a>
         <button id="toggleMap" class="btn btn-ghost">Mostrar mapa aquí</button>
 
-        <div id="mapWrap" class="hidden mt-2 rounded-2xl overflow-hidden shadow-ring border border-[#0E0E15]/10">
+        <div id="mapWrap" class="hidden mt-2 rounded-2xl overflow-hidden shadow-ring border border-inkDark/10">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3273.961484096081!2d-58.2177221!3d-34.8571951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2d7082a6b853f%3A0x4ee65ebcc4b29d72!2sQuinta%20ABUELO%20PEPE%20(sal%C3%B3n)!5e0!3m2!1ses-419!2sar!4v1759760325886!5m2!1ses-419!2sar"
             class="w-full h-56 border-0"
@@ -157,76 +156,77 @@
     </div>
 
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-      <span class="text-[11px] tracking-widest uppercase text-[#0E0E15]/70">Deslizá</span>
+      <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </div>
   </section>
 
   <!-- Slide 3: Dresscode -->
   <section class="relative flex items-center justify-center px-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-silver to-silverSoft"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm">
       <h2 class="font-display text-3xl mb-1 title-iris">Dresscode</h2>
-      <p class="text-[#0E0E15]/80 mb-5">Informal — evitar colores:</p>
+      <p class="text-soft mb-5">Informal — evitar colores:</p>
 
       <div class="grid grid-cols-4 gap-3">
-        <div class="rounded-xl h-16 shadow-soft border border-[#0E0E15]/10" style="background:#A882BF" title="Lila"></div>
-        <div class="rounded-xl h-16 shadow-soft border border-[#0E0E15]/10" style="background:#7C5FA3" title="Lila profundo"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-inkDark/10" style="background:#A882BF" title="Taupe"></div>
+        <div class="rounded-xl h-16 shadow-soft border border-inkDark/10" style="background:#7C5FA3" title="Plum"></div>
       </div>
     </div>
 
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-      <span class="text-[11px] tracking-widest uppercase text-[#0E0E15]/70">Deslizá</span>
+      <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </div>
   </section>
 
   <!-- Slide 5: Confirmar asistencia -->
   <section class="relative flex items-center justify-center px-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-silverSoft to-silver"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm text-center">
       <h2 class="font-display text-3xl mb-2 title-iris">Confirmar asistencia</h2>
-      <p class="text-[#0E0E15]/80 mb-5">Tu respuesta nos ayuda a organizar todo perfecto.</p>
+      <p class="text-soft mb-5">Tu respuesta nos ayuda a organizar todo perfecto.</p>
       <div class="grid grid-cols-1 gap-2">
-        <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank" class="btn btn-lilac">Completar formulario</a>
+        <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank" class="btn btn-primary">Completar formulario</a>
+        <button type="button" class="btn btn-ink">Completar más tarde</button>
       </div>
     </div>
 
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-      <span class="text:[11px] tracking-widest uppercase text-[#0E0E15]/70">Deslizá</span>
+      <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
     </div>
   </section>
 
   <!-- Slide 6: Regalo -->
   <section class="relative flex items-center justify-center px-6">
-    <div class="absolute inset-0 bg-gradient-to-b from-silver to-silverSoft"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm">
       <h2 class="font-display text-3xl mb-2 title-iris">Regalo</h2>
-      <p class="text-[#0E0E15]/85 mb-4">Si querés hacer un regalo, podés transferir:</p>
+      <p class="text-dim mb-4">Si querés hacer un regalo, podés transferir:</p>
 
       <div class="glass rounded-2xl p-4 shadow-soft space-y-3">
         <div class="flex items-center justify-between gap-3">
           <div>
-            <p class="text-[11px] uppercase tracking-wider text-[#0E0E15]/60">Alias</p>
+            <p class="text-[11px] uppercase tracking-wider text-soft">Alias</p>
             <p class="font-semibold">miaflores.bru.2875</p>
           </div>
           <button data-copy="miaflores.bru.2875" class="btn btn-ghost w-auto px-4 py-2 text-sm">Copiar</button>
         </div>
         <div class="flex items-center justify-between gap-3">
           <div>
-            <p class="text-[11px] uppercase tracking-wider text-[#0E0E15]/60">CBU</p>
+            <p class="text-[11px] uppercase tracking-wider text-soft">CBU</p>
             <p class="font-semibold break-all">1430001713045106770019</p>
           </div>
           <button data-copy="1430001713045106770019" class="btn btn-ghost w-auto px-4 py-2 text-sm">Copiar</button>
         </div>
         <div>
-          <p class="text-[11px] uppercase tracking-wider text-[#0E0E15]/60">Titular</p>
+          <p class="text-[11px] uppercase tracking-wider text-soft">Titular</p>
           <p class="font-semibold">Mia Lucila Flores</p>
         </div>
       </div>
 
-      <p class="text-xs text-[#0E0E15]/60 mt-3">¡Gracias por acompañarme en este momento tan especial! — <span class="font-script text-base">Mia</span></p>
+      <p class="text-xs text-soft mt-3">¡Gracias por acompañarme en este momento tan especial! — <span class="font-script text-base">Mia</span></p>
     </div>
   </section>
 
@@ -240,7 +240,7 @@
     const box = (label,val) => `
       <div class="timer-box rounded-xl p-3">
         <div class="text-2xl font-bold leading-none">${pad(val)}</div>
-        <div class="text-[10px] uppercase tracking-widest text-[#0E0E15]/70 mt-1">${label}</div>
+        <div class="text-[10px] uppercase tracking-widest text-soft mt-1">${label}</div>
       </div>`;
 
     function tick(){
