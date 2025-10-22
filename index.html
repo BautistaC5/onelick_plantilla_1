@@ -6,10 +6,8 @@
   <title>XV de Mia — OneClick Invitaciones</title>
   <meta name="theme-color" content="#D5A7ED" />
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -17,11 +15,11 @@
         extend: {
           colors: {
             /* Paleta personalizada */
-            lilacBg:   "#D5A7ED",  /* lila clarito (fondo) */
-            inkDark:   "#000000",  /* texto principal */
-            parchment: "#E6E4CE",  /* neutro cálido */
-            taupe:     "#7A7265",  /* secundario */
-            plum:      "#540D6E",  /* acento principal */
+            lilacBg: "#D5A7ED", /* lila clarito (fondo) */
+            inkDark: "#000000", /* texto principal */
+            parchment: "#E6E4CE", /* neutro cálido */
+            taupe: "#7A7265", /* secundario */
+            plum: "#540D6E", /* acento principal */
           },
           fontFamily: {
             display: ["Playfair Display", "serif"],
@@ -58,13 +56,10 @@
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
 
-
-
-
     /* Glass claro para legibilidad sobre foto */
-    .glass        { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.20); }
-    .glass-soft   { background: rgba(255,255,255,0.60); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.18); }
-    .timer-box    { background: rgba(255,255,255,0.86); border: 1px solid rgba(84,13,110,.22); }
+    .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.20); }
+    .glass-soft { background: rgba(255,255,255,0.60); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.18); }
+    .timer-box { background: rgba(255,255,255,0.86); border: 1px solid rgba(84,13,110,.22); }
 
     /* Botones */
     .btn {
@@ -95,17 +90,73 @@
     /* Utilidades de texto con opacidad en negro para jerarquía */
     .text-dim { color: rgba(0,0,0,.72); }
     .text-soft { color: rgba(0,0,0,.56); }
+
+    /* Estilos específicos de la galería */
+    .gallery-container {
+      position: relative;
+      width: 100%;
+      max-width: 500px; /* Ancho máximo para el carrusel */
+      overflow: hidden;
+      margin: 0 auto;
+      border-radius: 1rem;
+      box-shadow: var(--tw-shadow);
+    }
+    .gallery-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .gallery-images img {
+      width: 100%;
+      height: 60vh; /* Altura de las imágenes de la galería */
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 1rem;
+    }
+    .gallery-nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 10;
+      border-radius: 9999px;
+    }
+    .gallery-nav-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .gallery-nav-button.prev { left: 1rem; }
+    .gallery-nav-button.next { right: 1rem; }
+    .gallery-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      background-color: rgba(0, 0, 0, 0.3);
+      border-radius: 50%;
+      margin: 0 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .gallery-dot.active {
+      background-color: #540D6E;
+    }
   </style>
 </head>
 
 <body class="font-sans text-inkDark">
 
-  <!-- Slide 1: Hero + Countdown -->
-  <section class="relative flex items-center justify-center">
-    <img src="img/camila_main.png" alt="Camila" class="absolute inset-0 w-full h-full object-cover" />
-    <!-- Aclarado para que el glass con texto negro se lea cómodo -->
-    <div class="absolute inset-0 bg-white/20"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg/60 via-lilacBg/80 to-lilacBg/90"></div>
+  <section class="relative flex items-start justify-center pt-24 sm:pt-32">
+    <img src="img/foto_6.jpeg" alt="Mía" class="absolute inset-0 w-full h-full object-cover object-top" />
+    
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-lilacBg"></div>
+
 
     <div class="relative z-10 px-5 w-full max-w-sm">
       <div class="glass-soft rounded-2xl p-5 shadow-soft text-center">
@@ -119,7 +170,6 @@
       </div>
     </div>
 
-    <!-- Deslizá -->
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
       <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
       <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -128,7 +178,6 @@
     </div>
   </section>
 
-  <!-- Slide 2: Dónde y cuándo -->
   <section class="relative flex flex-col items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-lilacBg via-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm">
@@ -161,7 +210,6 @@
     </div>
   </section>
 
-  <!-- Slide 3: Dresscode -->
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm">
@@ -180,14 +228,39 @@
     </div>
   </section>
 
-  <!-- Slide 5: Confirmar asistencia -->
+  <section class="relative flex flex-col items-center justify-center px-6">
+    <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
+    <div class="relative z-10 w-full max-w-sm text-center">
+      <h2 class="font-display text-3xl mb-5 title-iris">Galería de Fotos</h2>
+
+      <div class="gallery-container shadow-soft">
+        <div class="gallery-images" id="galleryImages">
+          <img src="img/foto_1.jpeg" alt="Foto de Mia 1">
+          <img src="img/foto_2.jpeg" alt="Foto de Mia 2">
+          <img src="img/foto_3.jpeg" alt="Foto de Mia 3">
+          <img src="img/foto_4.jpeg" alt="Foto de Mia 4">
+          <img src="img/foto_5.jpeg" alt="Foto de Mia 5">
+          <img src="img/foto_6.jpeg" alt="Foto de Mia 6">
+        </div>
+        <button class="gallery-nav-button prev" onclick="moveGallery(-1)">❮</button>
+        <button class="gallery-nav-button next" onclick="moveGallery(1)">❯</button>
+      </div>
+      <div class="gallery-dots" id="galleryDots"></div>
+    </div>
+
+    <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
+      <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
+      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+    </div>
+  </section>
+
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm text-center">
       <h2 class="font-display text-3xl mb-2 title-iris">Confirmar asistencia</h2>
       <p class="text-soft mb-5">Tu respuesta nos ayuda a organizar todo perfecto.</p>
       <div class="grid grid-cols-1 gap-2">
-        <a href="https://docs.google.com/forms/d/XXXXXXXXXXXX/viewform" target="_blank" class="btn btn-primary">Completar formulario</a>
+        <a href="https://wa.me/5491124023792?text=Hola!%20Confirmo%20asistencia%20para%20el%20XV%20de%20M%C3%ADa%20%E2%9D%A4%EF%B8%8F" target="_blank" class="btn btn-primary">Confirmar por WhatsApp</a>
       </div>
     </div>
 
@@ -197,7 +270,6 @@
     </div>
   </section>
 
-  <!-- Slide 6: Regalo -->
   <section class="relative flex items-center justify-center px-6">
     <div class="absolute inset-0 bg-gradient-to-b from-lilacBg to-lilacBg"></div>
     <div class="relative z-10 w-full max-w-sm">
@@ -229,7 +301,6 @@
     </div>
   </section>
 
-  <!-- JS -->
   <script>
     // Countdown
     const eventDate = new Date("Nov 22, 2025 21:00:00").getTime();
@@ -274,6 +345,55 @@
         } catch { alert("No se pudo copiar. Mantené presionado para seleccionar."); }
       });
     });
+
+    // Gallery Logic (Nuevo)
+    let currentImageIndex = 0;
+    const galleryImages = document.getElementById('galleryImages');
+    const images = galleryImages.children;
+    const totalImages = images.length;
+    const galleryDotsContainer = document.getElementById('galleryDots');
+
+    function updateGallery() {
+      galleryImages.style.transform = `translateX(${-currentImageIndex * 100}%)`;
+      updateDots();
+    }
+
+    function moveGallery(direction) {
+      currentImageIndex += direction;
+      if (currentImageIndex >= totalImages) {
+        currentImageIndex = 0;
+      } else if (currentImageIndex < 0) {
+        currentImageIndex = totalImages - 1;
+      }
+      updateGallery();
+    }
+
+    function createDots() {
+      for (let i = 0; i < totalImages; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('gallery-dot');
+        dot.addEventListener('click', () => {
+          currentImageIndex = i;
+          updateGallery();
+        });
+        galleryDotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateDots() {
+      const dots = galleryDotsContainer.children;
+      for (let i = 0; i < dots.length; i++) {
+        if (i === currentImageIndex) {
+          dots[i].classList.add('active');
+        } else {
+          dots[i].classList.remove('active');
+        }
+      }
+    }
+
+    // Initialize gallery
+    createDots();
+    updateGallery();
   </script>
 </body>
 </html>
