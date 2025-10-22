@@ -50,11 +50,12 @@
     html, body { height: 100%; margin: 0; overflow-y: scroll; scroll-snap-type: y mandatory; background: #D5A7ED; }
     section { height: 100vh; scroll-snap-align: start; color: #000000; }
 
-    /* Título con degradado plum + taupe para elegancia */
-.title-iris{
-  background: linear-gradient(135deg, #000000 0%, #540D6E 100%);
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
+    /* CAMBIO: Restaurado al degradado original.
+    */
+    .title-iris{
+      background: linear-gradient(135deg, #000000 0%, #540D6E 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+    }
 
     /* Glass claro para legibilidad sobre foto */
     .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(10px); border: 1px solid rgba(84,13,110,.20); }
@@ -152,27 +153,22 @@
 
 <body class="font-sans text-inkDark">
 
-  <section class="relative flex items-start justify-center pt-24 sm:pt-32">
+  <section class="relative flex flex-col items-center justify-end">
     <img src="img/foto_6.jpeg" alt="Mía" class="absolute inset-0 w-full h-full object-cover object-top" />
     
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-lilacBg"></div>
+    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-lilacBg/90 to-transparent"></div>
 
-
-    <div class="relative z-10 px-5 w-full max-w-sm">
-      <div class="glass-soft rounded-2xl p-5 shadow-soft text-center">
-        <div class="mb-3 text-3xl sm:text-4xl font-display leading-tight">
-          <span class="block title-iris">Los XV de</span>
-          <span class="block mt-1 font-script text-5xl sm:text-6xl">Mia</span>
-        </div>
-        <p class="text-dim">¡Estás invitado!</p>
-
-        <div id="countdown" class="mt-5 grid grid-cols-4 gap-2 text-center text-sm"></div>
+    <div class="relative z-10 px-5 w-full max-w-sm text-center mb-16">
+      <div class="mb-3 text-3xl sm:text-4xl font-display leading-tight text-white">
+        <span class="block">Los XV de</span>
+        <span class="block mt-1 font-script text-5xl sm:text-6xl">Mia</span>
       </div>
+      <p class="text-white">¡Estás invitado!</p>
     </div>
 
     <div class="pointer-events-none absolute inset-x-0 z-20 flex flex-col items-center bottom-[calc(env(safe-area-inset-bottom)+14px)]">
-      <span class="text-[11px] tracking-widest uppercase text-soft">Deslizá</span>
-      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <span class="text-[11px] tracking-widest uppercase text-white">Deslizá</span>
+      <svg class="w-5 h-5 mt-1 animate-chevrons" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="color:white;">
         <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/>
       </svg>
     </div>
@@ -187,7 +183,9 @@
         Salón "Abuelo Pepe" · Diag. los Quilmes 1104, Ingeniero Juan Allan
       </p>
 
-      <div class="grid grid-cols-1 gap-3">
+      <div id="countdown" class="grid grid-cols-4 gap-2 text-center text-sm"></div>
+
+      <div class="grid grid-cols-1 gap-3 mt-5">
         <a href="https://maps.app.goo.gl/Z6vEhgC4vdPq5gjC6" target="_blank" class="btn btn-primary">Ver en Google Maps</a>
         <button id="toggleMap" class="btn btn-ghost">Mostrar mapa aquí</button>
 
@@ -290,6 +288,7 @@
             <p class="font-semibold break-all">1430001713045106770019</p>
           </div>
           <button data-copy="1430001713045106770019" class="btn btn-ghost w-auto px-4 py-2 text-sm">Copiar</button>
+
         </div>
         <div>
           <p class="text-[11px] uppercase tracking-wider text-soft">Titular</p>
@@ -379,6 +378,8 @@
         galleryDotsContainer.appendChild(dot);
       }
     }
+
+
 
     function updateDots() {
       const dots = galleryDotsContainer.children;
